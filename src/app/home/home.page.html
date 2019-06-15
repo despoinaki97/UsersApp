@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Users
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!--
+<ion-content>
+  <div class="ion-padding">
+    <p>Hello World</p>
+  </div>
+</ion-content>
+-->
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor = "let user of users"(click)="getDetails(user)" >
+      {{ user.name }}
+    </ion-item>
+  </ion-list>
+
+</ion-content>
