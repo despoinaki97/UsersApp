@@ -1,9 +1,37 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>details</ion-title>
-  </ion-toolbar>
+<ion-header class="header">
+    <ion-toolbar>
+        <ion-title class="ion-header">{{user.name}}</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button class="backbut" defaultHref="/"></ion-back-button>
+        </ion-buttons>
+
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-item lines="none" class="userdetail" *ngIf = "user" >
+        <ion-grid>
+
+            <ion-row><ion-title  class="username">{{ user.username}}</ion-title></ion-row>
+            <ion-row><img class="userface" src="https://www.ekahiornish.com/wp-content/uploads/2018/07/default-avatar-profile-icon-vector-18942381.jpg"></ion-row>
+
+            <ion-row><ion-icon ios="ios-mail" md="md-mail"></ion-icon> {{ user.email}}</ion-row>
+            <ion-row><ion-icon name="phone-portrait"></ion-icon>
+                {{ user.phone}}</ion-row>
+            <ion-row>  <ion-icon name="desktop"></ion-icon>
+                {{ user.website}}</ion-row>
+            <ion-row>  <ion-icon name="briefcase"></ion-icon>
+                {{ user.company.name}}</ion-row>
+            <ion-row>{{ user.company.catchPhrase}}</ion-row>
+            <ion-row>{{ user.company.bs}}</ion-row>
+
+            <ion-row>  <ion-icon ios="ios-pin" md="md-pin"></ion-icon>
+                {{ user.address.street }}</ion-row>
+            <ion-row>{{ user.address.suite }}</ion-row>
+            <ion-row>{{ user.address.city }}</ion-row>
+            <ion-row> {{ user.address.zipcode }}</ion-row>
+
+        </ion-grid>
+    </ion-item>
 
 </ion-content>

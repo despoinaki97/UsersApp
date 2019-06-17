@@ -14,8 +14,9 @@ import {UserService} from '../services/userservice/user.service';
 export class HomePage implements OnInit {
   // posts: Observable<any>;
   users: any[] = [];
+  url = 'http://jsonplaceholder.typicode.com/users';
 
-  constructor(public http: HttpClient, public userServ: UserService) {
+      constructor(public http: HttpClient, public userServ: UserService) {
     // console.log('Hello RestServiceProvider Provider');
     //
     // /*this.posts = this.http.get('http://jsonplaceholder.typicode.com/users');*/
@@ -32,8 +33,23 @@ export class HomePage implements OnInit {
             .catch(err => console.log(err));
   }
 
-    getDetails(user: any) {
-      console.log(user);
+  // getUser(user: number): Promise<any[]> {
+  //   return new Promise((resolve, reject) => {
+  //     this.http.get(this.url).toPromise()
+  //         .then((data: any[]) => { resolve(data); } )
+  //         .catch(err => reject(err));
+  //     console.log(user);
+  //   });
+  // }
+    getUser(user: string): Promise<any[]> {
+        return new Promise((resolve, reject) => {
+            console.log(user);
+            this.http.get(`${this.url}/${user}`).toPromise()
+                .then((data: any[]) => { console.log(data); resolve(data); })
+                .catch(erro => {reject(erro); } );
+        });
+        // console.log(user);
     }
+
 
 }
