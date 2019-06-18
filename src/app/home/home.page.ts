@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {UserService} from '../services/userservice/user.service';
+import {User} from '../../models/user';
 
 
 @Component({
@@ -13,7 +14,7 @@ import {UserService} from '../services/userservice/user.service';
 
 export class HomePage implements OnInit {
   // posts: Observable<any>;
-  users: any[] = [];
+  users: User;
   url = 'http://jsonplaceholder.typicode.com/users';
 
       constructor(public http: HttpClient, public userServ: UserService) {

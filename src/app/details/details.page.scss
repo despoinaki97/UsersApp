@@ -1,16 +1,31 @@
 .ion-header{
+  color: #ffffff;
+  margin-left: -48px;
   text-align: center;
+  background: #3880ff;
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 
-.backbut{
+.backbutton{
+  margin-left: 0%;
+  color: #ffffff;
 
 }
 
+
+
+.mapbutton{
+  margin-left: 28%;
+  width: 30%;
+
+}
 .userdetail{
   margin-top: 10px;
 }
 
 .username{
+
   text-align: center;
 }
 
@@ -18,4 +33,16 @@
   margin-left: 32.5%;
   width: 35%;
   height: 55%;
+}
+
+.usercard{
+  padding-top: 5%;
+  padding-bottom: 5%;
+  //background: #70ddff;
+
+}
+
+.mail {
+  margin-left: 28%;
+  padding-bottom: 2%;
 }

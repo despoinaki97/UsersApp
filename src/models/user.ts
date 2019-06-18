@@ -9,4 +9,6 @@ export interface User {
     zipcode: string;
     lat: any;
     lng: any;
+    address: any;
+    geo: any;
 }

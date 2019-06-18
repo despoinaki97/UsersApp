@@ -16,20 +16,20 @@ declare var google;
 export class MapPage implements OnInit {
   @ViewChild('map') mapContainer: ElementRef;
   map: any;
-  userData: User[] = [];
-
+  userData: User;
+  id;
   // tslint:disable-next-line:max-line-length
   constructor(private geolocation: Geolocation, private mapService: MapService, private userService: UserService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.mapService.getUserData(id)
-        .then((promData) => {this.userData[id] = promData;  console.log(promData); } )
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.mapService.getUserData(this.id)
+        .then((promData) => {this.userData = promData; this.getMarkers(); console.log(promData); } )
         .catch(err => console.log(err));
     console.log(this.userData);
     this.displayGoogleMap();
-    this.getMarkers();
+
   }
 
 
@@ -47,7 +47,7 @@ export class MapPage implements OnInit {
   }
 
   getMarkers() {
-    const position = new google.maps.LatLng(this.userData[9], this.userData[10]);
+    const position = new google.maps.LatLng(this.userData.address.geo.lat, this.userData.address.geo.lng);
 
     const userMarker = new google.maps.Marker({
         position , title: 'user'});

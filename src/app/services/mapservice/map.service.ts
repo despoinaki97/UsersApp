@@ -11,11 +11,11 @@ export class MapService {
   constructor(private http: HttpClient) {
   }
 
-  getUserData(user: string): Promise<any[]> {
+  getUserData(user: string): Promise<User> {
     return new Promise((resolve, reject) => {
       console.log(user);
       this.http.get(`${this.url}/${user}`).toPromise()
-          .then((data: User[]= []) => {
+          .then((data: User) => {
             // console.log(data);
             resolve(data);
           })
