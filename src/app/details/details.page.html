@@ -1,6 +1,6 @@
 <ion-header class="header">
     <ion-toolbar>
-        <ion-title class="ion-header">{{user.name}}</ion-title>
+        <ion-title class="ion-header">Username</ion-title>
         <ion-buttons slot="start">
             <ion-back-button class="backbut" defaultHref="/"></ion-back-button>
         </ion-buttons>
@@ -30,6 +30,7 @@
             <ion-row>{{ user.address.suite }}</ion-row>
             <ion-row>{{ user.address.city }}</ion-row>
             <ion-row> {{ user.address.zipcode }}</ion-row>
+            <ion-button class="mapbutton" [routerLink]="['/', 'map' , user.id]">MAP</ion-button>
 
         </ion-grid>
     </ion-item>

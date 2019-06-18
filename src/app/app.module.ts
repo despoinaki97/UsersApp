@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule} from '@angular/common/http';
 import { UserService } from './services/userservice/user.service';
 import {HomePage} from './home/home.page';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import {MapService} from './services/mapservice/map.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +24,9 @@ import {HomePage} from './home/home.page';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     UserService,
-    HomePage
+    HomePage,
+    Geolocation,
+    MapService
   ],
   bootstrap: [AppComponent]
 })

@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {UserService} from './services/userservice/user.service';
 import {HomePage} from './home/home.page';
+import {MapService} from './services/mapservice/map.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private userService: UserService,
-
+    private mapService: MapService
 ) {
     this.initializeApp();
   }
@@ -26,6 +27,8 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.userService.url = 'http://jsonplaceholder.typicode.com/users';
+      this.mapService.url = 'http://jsonplaceholder.typicode.com/users';
+
     });
   }
 }
