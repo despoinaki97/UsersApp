@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {UserService} from './services/userservice/user.service';
 import {HomePage} from './home/home.page';
 import {MapService} from './services/mapservice/map.service';
+import {User} from '../models/user';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private userService: UserService,
-    private mapService: MapService
+    private mapService: MapService,
 ) {
     this.initializeApp();
   }
