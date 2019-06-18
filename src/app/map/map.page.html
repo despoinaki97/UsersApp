@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Map</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content padding>
+    <div #map id="map"></div>
+    <ion-item *ngIf = "userData" >
+      <ion-icon name="pin"></ion-icon>{{ userData }}
+    </ion-item>
+  </ion-content>
+
