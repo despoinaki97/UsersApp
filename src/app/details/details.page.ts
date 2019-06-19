@@ -18,7 +18,7 @@ export class DetailsPage implements OnInit {
   ngOnInit(): void {
       const id = this.activatedRoute.snapshot.paramMap.get('id');
 
-      this.homePage.getUser(id)
+      this.userServ.getUser(id)
         .then( (promData) => {this.user = promData; console.log(promData); } )
         .catch(err => console.log(err));
 

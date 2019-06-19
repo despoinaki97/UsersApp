@@ -17,18 +17,28 @@ export class MapPage implements OnInit {
   @ViewChild('map') mapContainer: ElementRef;
   map: any;
   userData: User;
-  id;
+  users: User[];
+  // id;
   // tslint:disable-next-line:max-line-length
   constructor(private geolocation: Geolocation, private mapService: MapService, private userService: UserService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.mapService.getUserData(this.id)
-        .then((promData) => {this.userData = promData; this.getMarkers(); console.log(promData); } )
+   const id = this.activatedRoute.snapshot.paramMap.get('id');
+   this.userService.getUsers()
+        .then( (promData) => {this.users = promData;
+                              this.displayGoogleMap();
+                              this.getMarkers(promData);
+        })
         .catch(err => console.log(err));
-    console.log(this.userData);
-    this.displayGoogleMap();
+   this.mapService.getUserData(id)
+          .then((promData) => {
+            this.userData = promData;
+            this.displayGoogleMap();
+            this.getMarkers([this.userData]);
+            console.log(promData);
+          })
+          .catch(err => console.log(err));
 
   }
 
@@ -46,12 +56,17 @@ export class MapPage implements OnInit {
     this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
   }
 
-  getMarkers() {
-    const position = new google.maps.LatLng(this.userData.address.geo.lat, this.userData.address.geo.lng);
+  getMarkers(userArr: User[]) {
+    if (userArr.length) {
+      userArr.forEach((user: User) => {
+        const position = new google.maps.LatLng(user.address.geo.lat, user.address.geo.lng);
 
-    const userMarker = new google.maps.Marker({
-        position , title: 'user'});
-    userMarker.setMap(this.map);
+        const userMarker = new google.maps.Marker({
+          position, title: 'user'
+        });
+        userMarker.setMap(this.map);
+      });
+    }
   }
 
 

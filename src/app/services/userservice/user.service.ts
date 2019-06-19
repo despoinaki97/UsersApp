@@ -11,13 +11,22 @@ export class UserService {
   url: string;
   constructor(public http: HttpClient) {}
 
-  getUsers(): Promise<User> {
+  getUsers(): Promise<User[]> {
    return new Promise((resolve, reject) => {
       this.http.get(this.url).toPromise()
-          .then((data: User) => { resolve(data); } )
+          .then((data: User[]) => { resolve(data); } )
           .catch(err => reject(err));
    });
   }
 
+    getUser(user: number): Promise<any[]> {
+        return new Promise((resolve, reject) => {
+            console.log(user);
+            this.http.get(`${this.url}/${user}`).toPromise()
+                .then((data: any[]) => { console.log(data); resolve(data); })
+                .catch(erro => {reject(erro); } );
+        });
+        // console.log(user);
+    }
 
 }

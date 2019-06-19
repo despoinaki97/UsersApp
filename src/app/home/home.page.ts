@@ -14,7 +14,7 @@ import {User} from '../../models/user';
 
 export class HomePage implements OnInit {
   // posts: Observable<any>;
-  users: User;
+  users: User[];
   url = 'http://jsonplaceholder.typicode.com/users';
 
       constructor(public http: HttpClient, public userServ: UserService) {
@@ -42,15 +42,7 @@ export class HomePage implements OnInit {
   //     console.log(user);
   //   });
   // }
-    getUser(user: string): Promise<any[]> {
-        return new Promise((resolve, reject) => {
-            console.log(user);
-            this.http.get(`${this.url}/${user}`).toPromise()
-                .then((data: any[]) => { console.log(data); resolve(data); })
-                .catch(erro => {reject(erro); } );
-        });
-        // console.log(user);
-    }
+
 
 
 }
