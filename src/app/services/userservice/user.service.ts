@@ -19,7 +19,7 @@ export class UserService {
    });
   }
 
-    getUser(user: number): Promise<any[]> {
+    getUser(user: string): Promise<any[]> {
         return new Promise((resolve, reject) => {
             console.log(user);
             this.http.get(`${this.url}/${user}`).toPromise()

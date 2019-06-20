@@ -62,7 +62,7 @@ export class MapPage implements OnInit {
         const position = new google.maps.LatLng(user.address.geo.lat, user.address.geo.lng);
 
         const userMarker = new google.maps.Marker({
-          position, title: 'user'
+          position, label: { text: user.username }
         });
         userMarker.setMap(this.map);
       });
