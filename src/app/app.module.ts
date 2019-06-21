@@ -13,7 +13,6 @@ import { HttpClientModule} from '@angular/common/http';
 import { UserService } from './services/userservice/user.service';
 import {HomePage} from './home/home.page';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import {MapService} from './services/mapservice/map.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +25,7 @@ import {MapService} from './services/mapservice/map.service';
     UserService,
     HomePage,
     Geolocation,
-    MapService
+
   ],
   bootstrap: [AppComponent]
 })

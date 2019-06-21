@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import {MapService} from '../services/mapservice/map.service';
 import {UserService} from '../services/userservice/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {User} from '../../models/user';
@@ -18,27 +17,28 @@ export class MapPage implements OnInit {
   map: any;
   userData: User;
   users: User[];
-  // id;
-  // tslint:disable-next-line:max-line-length
-  constructor(private geolocation: Geolocation, private mapService: MapService, private userService: UserService, private activatedRoute: ActivatedRoute) {
+  constructor(private geolocation: Geolocation, private userService: UserService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
    const id = this.activatedRoute.snapshot.paramMap.get('id');
-   this.userService.getUsers()
-        .then( (promData) => {this.users = promData;
-                              this.displayGoogleMap();
-                              this.getMarkers(promData);
-        })
-        .catch(err => console.log(err));
-   this.mapService.getUserData(id)
-          .then((promData) => {
-            this.userData = promData;
-            this.displayGoogleMap();
-            this.getMarkers([this.userData]);
-            console.log(promData);
-          })
-          .catch(err => console.log(err));
+   if (!id) {
+       this.userService.getUsers()
+       .then( (promData) => {this.users = promData;
+                             this.displayGoogleMap();
+                             this.getMarkers(promData);
+       })
+       .catch(err => console.log(err));
+   } else {
+       this.userService.getUser(id)
+           .then((promData) => {
+               this.userData = promData;
+               this.displayGoogleMap();
+               this.getMarkers([this.userData]);
+               console.log(promData);
+           })
+           .catch(err => console.log(err));
+   }
 
   }
 
