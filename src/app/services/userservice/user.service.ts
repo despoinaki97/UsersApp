@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {error} from 'selenium-webdriver';
 import {User} from '../../../models/user';
 
 @Injectable({

@@ -12,7 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class DetailsPage implements OnInit {
  userid: string;
  user: any;
-  constructor(public homePage: HomePage, public userServ: UserService, private activatedRoute: ActivatedRoute) {
+  constructor( public userServ: UserService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
